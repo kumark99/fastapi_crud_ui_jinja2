@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FishCollection</title>
+    <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+    <script src="static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container w-50 ">
+ <h1>Fish Collection</h1>
+ <hr class="text-primary">
+ <p>Welcome to gold fish collection , here you can find and explore exotic collection of goldfishes across the world.
+     Click <a href="http://localhost:8000/fish">here</a> to see the list of  gold fishes
+ </p>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/static/images/common.jpg" class="d-block w-20" alt="common" height="350" width="700">
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/tamasaba.jpg" class="d-block w-20" alt="telescope" height="350" width="700">
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/veiltail.jpg" class="d-block w-20" alt="veiltail" height="350" width="700">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+    </div>
+ </div>
+</body>
+</html>

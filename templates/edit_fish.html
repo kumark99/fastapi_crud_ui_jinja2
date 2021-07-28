@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Item Details</title>
+    <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container w-50">
+<div class="card text-left" style="width: 32rem;align:center;">
+    <div class="card-body">
+      <div class="card-header">
+        <h1> Edit fish </h1>
+      </div>
+        <form action="http://localhost:8000/update" method="post">
+                <div class="mb-3">
+                      <label for="fishId" class="form-label">Fish Id</label>
+                      <input type="text" class="form-control" id="fishId" name="fishId" value="{{fish.fish_id}}" readonly>
+                </div>
+                 <div class="mb-3">
+                      <label for="fishName" class="form-label">Fish Name</label>
+                      <input type="text" class="form-control" id="fishName"  name="fishName" value="{{fish.fish_name}}">
+                </div>
+                 <div class="mb-3">
+                    <label for="fishImage" class="form-label">Fish Image</label>
+                    <input type="text" class="form-control" id="fishImage"  name="fishImage" value="{{fish.fish_image}}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="fishDescription" class="form-label">Fish Description</label>
+                    <textarea class="form-control" id="fishDescription"  name="fishDescription"  rows="3" readonly>{{fish.fish_description}}</textarea>
+                </div>
+
+                <input type="submit" class="btn btn-primary"> &nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" class="btn btn-danger">
+           </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Item Details</title>
+    <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container w-50">
+    <h1>{{ fish.fish_name }} details</h1>
+    <hr width="55%"/>
+    <div class="card" style="width: 28rem;">
+        <img src="/static/images/{{fish.fish_image}}" class="card-img-top" alt="fish_image">
+      <div class="card-body">
+        <h5 class="card-title">{{fish.fish_name}}</h5>
+          <hr>
+        <p class="card-text">{{fish.fish_description}}</p>
+       </div>
+    </div>
+</div>
+
+</body>
+</html>
