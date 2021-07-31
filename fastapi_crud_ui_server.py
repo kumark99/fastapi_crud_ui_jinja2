@@ -34,18 +34,18 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
-async def home_page(request: Request):
+def home_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/fish/{id}", response_class=HTMLResponse)
-async def read_fish(request: Request, id: int):
+def read_fish(request: Request, id: int):
     print('find fish called with id :'+str(id))
     result = fish_collection.find_one({'fish_id': id})
     print(result['fish_name'])
     return templates.TemplateResponse("view_fish.html", {"request": request, "fish": result})
 
 @app.get("/fish", response_class=HTMLResponse)
-async def read_all_fish(request: Request):
+def read_all_fish(request: Request):
     result = fish_collection.find({})
     print(result)
     return templates.TemplateResponse("list_fish.html", {"request": request, "fish_list": result})
@@ -56,7 +56,7 @@ async def create_fish_ui(request: Request):
 
 
 @app.post("/create",response_class=HTMLResponse)
-async def create_fish(request:Request,fishId:str = Form(...),fishName:str = Form(...),fishImage:str = Form(...),fishDescription:str = Form(...)):
+def create_fish(request:Request,fishId:str = Form(...),fishName:str = Form(...),fishImage:str = Form(...),fishDescription:str = Form(...)):
     print('fish_id :'+str(fishId) +', fish_name:'+str(fishName)+', fishimage:'+str(fishImage)+', fisdescription:'+str(fishDescription))
     #initialize the model
     fish = Fish(fish_id=fishId,fish_name=fishName,fish_image=fishImage,fish_description=fishDescription)
@@ -69,7 +69,7 @@ async def create_fish(request:Request,fishId:str = Form(...),fishName:str = Form
 
 
 @app.get("/fish/delete/{id}",response_class=HTMLResponse)
-async def delete_fish(id:int,response:Response,request:Request):
+def delete_fish(id:int,response:Response,request:Request):
     print(" delete fish method called :"+str(id))
     result = fish_collection.delete_one({'fish_id':id})
     time.sleep(1)
@@ -78,13 +78,13 @@ async def delete_fish(id:int,response:Response,request:Request):
     return templates.TemplateResponse("list_fish.html", {"request": request, "fish_list": result})
 
 @app.get("/fish/edit/{id}",response_class=HTMLResponse)
-async def edit_fish(id:int,response:Response,request:Request):
+def edit_fish(id:int,response:Response,request:Request):
     print(" method called :"+str(id))
     result = fish_collection.find_one({'fish_id':id})
     return templates.TemplateResponse("edit_fish.html", {"request": request, "fish": result})
 
 @app.post("/update",response_class=HTMLResponse)
-async def update_fish(request:Request,response:Response,fishId:str = Form(...),fishName:str = Form(...),fishImage:str = Form(...),fishDescription:str = Form(...)):
+def update_fish(request:Request,response:Response,fishId:str = Form(...),fishName:str = Form(...),fishImage:str = Form(...),fishDescription:str = Form(...)):
     print('fish_id :'+str(fishId))
     print('fishname '+str(fishName))
     print('fishimage ' + str(fishImage))
@@ -102,7 +102,7 @@ async def update_fish(request:Request,response:Response,fishId:str = Form(...),f
 
 
 @app.put("/updateapi",status_code=202)
-async def update_api(fish:Fish):
+def update_api(fish:Fish):
     print('Update api called....'+str(fish.fish_name))
     result = fish_collection.update_one({'fish_id':fish.fish_id},{"$set" : {'fish_name':fish.fish_name}})
     return "UPDATE SUCCESS"
