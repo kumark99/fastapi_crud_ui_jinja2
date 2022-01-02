@@ -16,5 +16,9 @@ Maintain the directory  structure to execute the code
 ### To access  the application 
  * http://localhost:8000 *
 
+### Youtube link
 Complete instruction and supporting video on Youtube
 https://www.youtube.com/watch?v=B5iV2emqOi8&t=177s
+
+### Youtube Channel link
+https://www.youtube.com/channel/UCVyNVB6evazPGWWC83TeQxw
